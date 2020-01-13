@@ -10,7 +10,7 @@ class BookmarkManager < Sinatra::Base
   run! if app_file == $0
 
   get '/bookmarks' do 
-  @bookmarks = Bookmark.new.all
+  @bookmarks = Bookmark.new.all.join(", ")
     erb(:bookmarks)
   end 
 end

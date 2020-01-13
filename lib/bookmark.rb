@@ -1,7 +1,15 @@
+require 'pg'
+
 class Bookmark
 
-def all
-['bookmark1','bookmark2','bookmark3'] 
-end 
+  def initialize
+    @database = PG.connect(dbname: 'bookmark_manager')
+  end
+
+  def all
+    @database.exec("SELECT url FROM bookmarks").map do |bookmark|
+      bookmark["url"]
+    end
+  end 
 
 end 
