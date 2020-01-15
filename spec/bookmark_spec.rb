@@ -21,15 +21,12 @@ describe Bookmark do
   end
     
     describe ".create" do
+
       it "creates new bookmarks" do
-
-        # connection = PG.connect(dbname: 'bookmark_manager_test')
-        
-        # connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.thrasher.com');")
-
-        # expect(Bookmark.create()).to include('http://www.thrasher.com')
-
+        Bookmark.create(url: 'http://www.thrasher.com')
+        expect(Bookmark.all). to include('http://www.thrasher.com')
     end
+    
   end 
 
 end
