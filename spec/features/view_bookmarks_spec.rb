@@ -1,9 +1,20 @@
+require 'pg'
+
 feature 'allows user to view bookmarks' do 
   scenario 'it should display bookmarks' do 
-    visit ('/')
-    click_on 'View all Bookmarks'
-    expect(page).to have_content('http://www.makersacademy.com, http://www.google.com, http://www.destroyallsoftware.com')
+
+    connection = PG.connect(dbname: 'bookmark_manager_test')
+    connection.exec("INSERT INTO bookmarks VALUES(1, 'http://www.makersacademy.com')")
+    connection.exec("INSERT INTO bookmarks VALUES(2, 'http://www.google.com')")
+    connection.exec("INSERT INTO bookmarks VALUES(3, 'http://www.destroyallsoftware.com')")
+    
+    visit ('/bookmarks')
+
+    expect(page).to have_content 'http://www.makersacademy.com'
+    expect(page).to have_content 'http://www.google.com'
+    expect(page).to have_content 'http://www.destroyallsoftware.com'
   end
+
 end 
 
 
