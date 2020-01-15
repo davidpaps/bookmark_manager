@@ -15,3 +15,5 @@ I want to see all saved bookmark
 - Create the database using the psql command CREATE        DATABASE bookmark_manager;
 - Connect to the database using the pqsl command \c        bookmark_manager;
 - Run the query we have saved in the file                  01-create_bookmarks_table.sql
+
+Repeat the above for a 'bookmark_manager_test' database, and create a table with the same data from the '01-create_bookmarks_table.sql' file.

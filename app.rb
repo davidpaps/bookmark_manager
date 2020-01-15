@@ -8,8 +8,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do 
-  @bookmarks = Bookmark.new.all.join(", ")
+  @bookmarks = Bookmark.all.join(", ")
     erb(:bookmarks)
   end
-   
+
 end
