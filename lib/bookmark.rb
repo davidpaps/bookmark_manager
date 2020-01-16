@@ -2,32 +2,38 @@ require 'pg'
 
 class Bookmark
 
-    attr_reader :title, :url
+    attr_reader :title, :url, :id
 
-  def initialize(title, url)
+  def initialize(title, url, id)
     @title = title
     @url = url
+    @id = id
   end
 
   def self.all
-    if ENV[ 'ENVIRONMENT' ] == 'test'
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-    else 
-      connection = PG.connect(dbname: 'bookmark_manager')
-    end
-
+    connection = self.connect
     result = connection.exec("SELECT * FROM bookmarks")
-    result.map { |bookmark| self.new( bookmark["title"], bookmark["url"] ) }
+    result.map { |bookmark| self.new( bookmark["title"], bookmark["url"], bookmark["id"] ) }
   end 
 
   def self.create(title, url)
+    connection = self.connect
+    connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}')")
+  end
+
+  def self.delete(id)
+    connection = self.connect
+    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
+  end
+
+  private
+
+  def self.connect
     if ENV[ 'ENVIRONMENT' ] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')
     else      
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-
-    connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}')")
   end
 
 end 
