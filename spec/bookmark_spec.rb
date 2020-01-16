@@ -8,25 +8,23 @@ describe Bookmark do
 
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.google.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.destroyallsoftware.com');")
+      connection.exec("INSERT INTO bookmarks (title, url) VALUES ('Makers', 'http://www.makersacademy.com');")
 
-      bookmarks = Bookmark.all
-
-      expect(bookmarks).to include('http://www.makersacademy.com')
-      expect(bookmarks).to include('http://www.google.com')
-      expect(bookmarks).to include('http://www.destroyallsoftware.com')
+      expect(Bookmark.all[0].title).to include('Makers')
+      expect(Bookmark.all[0].url).to include('http://www.makersacademy.com')
+      
     end 
   end
     
     describe ".create" do
 
       it "creates new bookmarks" do
-        Bookmark.create(url: 'http://www.thrasher.com')
-        expect(Bookmark.all). to include('http://www.thrasher.com')
+        Bookmark.create('Makers', 'http://www.makersacademy.com')
+        expect(Bookmark.all[0].title). to include('Makers')
+        expect(Bookmark.all[0].url). to include('http://www.makersacademy.com')
+        
     end
-    
+
   end 
 
 end

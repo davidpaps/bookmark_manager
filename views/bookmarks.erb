@@ -1,5 +1,6 @@
-<% @bookmarks.each do |link| %>
-<li> <%= link %></li>
+<% @bookmarks.each do |bookmark| %>
+<li> <a href=<%= bookmark.url %>> <%= bookmark.title %></a>
+</li>
 <% end %>
 <br>
 <br>
