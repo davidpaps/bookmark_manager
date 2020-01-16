@@ -1,4 +1,6 @@
-<%= @bookmarks %>, <%= params[:url] %>
+<% @bookmarks.each do |link| %>
+<li> <%= link %></li>
+<% end %>
 <br>
 <br>
 <form action="/" method="get">

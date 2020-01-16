@@ -1,5 +1,3 @@
-require 'pg'
-
 feature 'allows user to view bookmarks' do 
   scenario 'it should display bookmarks' do 
 
