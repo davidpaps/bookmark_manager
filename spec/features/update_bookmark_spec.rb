@@ -11,5 +11,4 @@ feature "update bookmark" do
     expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
     expect(page).to have_link('YouTube', href: 'http://www.youtube.com')
   end
-
 end

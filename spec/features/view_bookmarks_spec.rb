@@ -8,7 +8,6 @@ feature 'allows user to view bookmarks' do
     expect(page).to have_content('Google')
     expect(page).to have_content('Destroy All Software')
   end
-
 end 
 
 

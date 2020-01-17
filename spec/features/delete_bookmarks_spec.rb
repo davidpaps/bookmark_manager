@@ -8,5 +8,4 @@ feature "Deleting bookmarks" do
     expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
     expect(page).to have_content('Google')
   end
-
 end
