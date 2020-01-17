@@ -9,6 +9,7 @@ feature "Deleting bookmarks" do
     visit('/bookmarks')
     find("#DeleteMakers").click
     expect(page).not_to have_content('Makers')
+    expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
     expect(page).to have_content('Google')
   end
 
