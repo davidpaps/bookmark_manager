@@ -1,39 +1,15 @@
 # Bookmark Manager
 
-## User stories
+Week 4 Afternoon Challenge at Makers. This was a collaborative exercise, pairing every day with a different member of the cohort. The objectives of the week were to intergrate databases into a web app to store the state of the program. The app is meant to be able to `Create`, `Review`, `Update` and `Destroy` a user-inputted bookmark. The app followed the `MVC` structure, `RESTful` API, and good Test Driven Development.
 
-```
-As a user
+Although the styling on the app is basic, the functionality is solid, and very efficient. All bokmarks added can be stored in the database. The database logic has been refactored into its own class, as has the CRUD logic, showing encapsulation, SRP and DRY code, all being Test Driven using `RSpec` + `Capybara`.
 
-I want to see all saved bookmark
-```
+**The functionality of the app:**
 
-![1st user story](https://i.imgur.com/lDwRnkU.jpg "1st User story")
-
-- Connect to psql
-- Create the database using the psql command CREATE DATABASE bookmark_manager;
-- Connect to the database using the pqsl command \c bookmark_manager;
-- Run the query we have saved in the file 01-create_bookmarks_table.sql
-
-Repeat the above for a 'bookmark_manager_test' database, and create a table with the same data from the '01-create_bookmarks_table.sql' file.
-
----
-
-# Chitter Challenge
-
-This was the fourth weekend challenge at Makers. It reinforced what I had learnt in the weeks work - how to add a database into web apps. Although the app is basic in it's styling, its functionality is quite complex. Adding a database (with a test database) was a heavy topic to learn. Most of the time was speant refactoring the databse connection into its own class, following Encapsulation and the SRP principal, whilst at the same time keeping DRY.
-
-I followed the brief when making this web app and wrote the following list:
-
-- Set up a database for posts to be stored on
-- Set up a test database to mimic the real one, and have tests add and delete off that. This Truncates at the end of every test
-- Have the connection to the database decided in its own class, wrapped in a Database Connection object
-
-- User can post a 'peep' that is then stored on the database
-- View the 'peeps' stored on the database in reverse chronological order
-- Timestamps are shown on each 'peep'
-- User can log in to chitter via a sign up page
-- Password will be encrypted after Signed up
+- A user can view all exisiting bookmarks in the database
+- A user can add a bookmark to the database
+- A user can update the bookmark (name and link) from the database
+- A user can delete the bookmark from the database
 
 ---
 
@@ -54,24 +30,24 @@ psql
 This will open up psql. From here you can create the Database by typing in the command line:
 
 ```
-CREATE DATABASE chitter
+CREATE DATABASE bookmark-manager
 ```
 
 Then connect to this Database by typing in the command line:
 
 ```
-\c chitter;
+\c bookmark-manager;
 ```
 
-You will then be able to create the tables necessary for the 'Peeps' and 'Users' to be stored in. Open up the [_db/migrations_](/db/migrations) folder, you will see the following 2 files:
+You will then be able to create the tables necessary for the 'bookmarks' to be stored in. Open up the [_db/migrations_](/db/migrations) folder, you will see the following 2 files:
 
 ```
 01_create_bookmarks_table.sql
-03_create_users_table.sql
+02_add_title_to_bookmarks.sql
 
 ```
 
-Paste the commands into the 'chitter' Database you have just created via psql in the command line. The Tables will then be created. To launch the app locally, in the command line type:
+Paste the commands into the 'bookmark-manager' Database you have just created via psql in the command line. The Tables will then be created. To launch the app locally, in the command line type:
 
 ```
 rackup
@@ -85,36 +61,14 @@ To run the test suite (RSpec and Capybara), in the command line type:
 rspec
 ```
 
-This will display 11 passing tests with 100% coverage. These tests will run on the Test Environment, another Chitter/Test Database will need to be set up with the same tables in order to run the tests.
+This will display 11 passing tests with 100% coverage. These tests will run on the Test Environment, another `bookmark-manager-test' Database will need to be set up with the same tables in order to run the tests.
 
 ---
 
-## Brief
+### Homepage/Add Bookmarks
 
-```
-As a Maker
-So that I can let people know what I am doing
-I want to post a message (peep) to chitter
+<img src="./images/home-add.png" />
 
-As a maker
-So that I can see what others are saying
-I want to see all peeps in reverse chronological order
+### View/Delete/Update Bookmarks
 
-As a Maker
-So that I can better appreciate the context of a peep
-I want to see the time at which it was made
-
-As a Maker
-So that I can post messages on Chitter as me
-I want to sign up for Chitter
-```
-
----
-
-### Homepage
-
-<img src="./images/homepage.png" />
-
-### View Peeps
-
-<img src="./images/peeps.png" />
+<img src="./images/view-delete-update.png" />
