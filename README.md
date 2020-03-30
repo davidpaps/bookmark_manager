@@ -1,6 +1,6 @@
 # Bookmark Manager
 
-Week 4 Afternoon Challenge at Makers. This was a collaborative exercise, pairing every day with a different member of the cohort. The objectives of the week were to intergrate databases into a web app to store the state of the program. The app is meant to be able to `Create`, `Review`, `Update` and `Destroy` a user-inputted bookmark. The app followed the `MVC` structure, `RESTful` API, and good Test Driven Development.
+Week 4 Afternoon Challenge at Makers. This was a collaborative exercise, pairing every day with a different member of the cohort. The objectives of the week were to intergrate databases into a web app to store the state of the program. The app is meant to be able to `Create`, `Review`, `Update` and `Destroy` a user-inputted bookmark. The app followed the `MVC` structure, `RESTful` API, and good `Test Driven Development`.
 
 Although the styling on the app is basic, the functionality is solid, and very efficient. All bokmarks added can be stored in the database. The database logic has been refactored into its own class, as has the CRUD logic, showing encapsulation, SRP and DRY code, all being Test Driven using `RSpec` + `Capybara`.
 
@@ -68,6 +68,8 @@ This will display 11 passing tests with 100% coverage. These tests will run on t
 ### Homepage/Add Bookmarks
 
 <img src="./images/home-add.png" />
+
+---
 
 ### View/Delete/Update Bookmarks
 
